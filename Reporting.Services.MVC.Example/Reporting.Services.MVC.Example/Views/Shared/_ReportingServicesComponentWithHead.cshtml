@@ -1,0 +1,23 @@
+﻿@model Reporting.Services.MVC.Example.Models.ReportingServicesComponentModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" id="altaDocumentoFirmante">
+</div>
+
+<script type="text/javascript">
+    function filtrosReporte() {
+        var filtrosReporte = {};
+        var filtros = $("iframe").get(0).contentWindow.getReportParameters();
+        $(filtros).each(function (index, nombre) {
+            filtrosReporte[nombre.split('_')[0]] = nombre.split('_')[1];
+        });
+        return filtrosReporte;
+    }
+</script>
+
+<div>
+    @Html.Partial("_ReportingServicesComponent", Model)
+</div>

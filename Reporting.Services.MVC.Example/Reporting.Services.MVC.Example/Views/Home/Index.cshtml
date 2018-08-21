@@ -1,0 +1,23 @@
+﻿@model Reporting.Services.MVC.Example.Models.ReportModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Example of Reporting Services with MVC</h1>
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("View", "Home", FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.RutaReporte)
+        @Html.TextBoxFor(m=>m.RutaReporte, null, new { @class = "form-control" })
+
+        
+
+        @Html.LabelFor(m => m.Parametros) <label><em>(nombreparametro1=valorparametro1;nombreparametro2=valorparametro2)</em></label>
+        @Html.TextBoxFor(m => m.Parametros, null, new { @class = "form-control" })
+
+        <button type="submit" class="btn btn-primary">Ver Reporte</button>
+    }
+</div>

@@ -1,0 +1,29 @@
+﻿@model Reporting.Services.MVC.Example.Models.ReportingServicesComponentModel
+
+@using MvcReportViewer
+
+<div class="jumbotron">
+    <h1>Example of Reporting Services with MVC</h1>
+</div>
+
+<div class="row">
+    <div style="overflow:scroll;">
+
+        @if (Model.rInterface == Reporting.Services.MVC.Example.Models.ReportInterface.Basic)
+    {
+        @Html.MvcReportViewer(Model.reportPath,
+                  Model.reportServerUrl,
+                  Model.username,
+                  Model.password,
+                  Model.reportParameters,
+                  Model.controlSettings,
+                  Model.htmlAttributes,
+                  Model.method)
+}
+else if (Model.rInterface == Reporting.Services.MVC.Example.Models.ReportInterface.Fluent)
+{
+    @Html.MvcReportViewerFluent(Model.reportPath).ReportServerUrl(Model.reportServerUrl).Username(Model.username).Password(Model.password).ReportParameters(Model.reportParameters).ControlSettings(Model.controlSettings).Attributes(Model.htmlAttributes).Method(Model.method);
+}
+
+    </div>
+</div>
